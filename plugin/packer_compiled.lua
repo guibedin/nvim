@@ -87,7 +87,7 @@ _G.packer_plugins = {
   ["dracula.nvim"] = {
     loaded = true,
     path = "/home/guilhermes/.local/share/nvim/site/pack/packer/start/dracula.nvim",
-    url = "https://github.com/Mofiqul/dracula.nvim"
+    url = "https://github.com/maxmx03/dracula.nvim"
   },
   harpoon = {
     loaded = true,

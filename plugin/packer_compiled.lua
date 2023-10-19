@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/guilhermes/.local/share/nvim/site/pack/packer/start/dracula.nvim",
     url = "https://github.com/maxmx03/dracula.nvim"
   },
+  ["git-blame.nvim"] = {
+    loaded = true,
+    path = "/home/guilhermes/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
+    url = "https://github.com/f-person/git-blame.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/guilhermes/.local/share/nvim/site/pack/packer/start/harpoon",

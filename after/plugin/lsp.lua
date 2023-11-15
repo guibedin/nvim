@@ -17,7 +17,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = { 'dockerls', 'docker_compose_language_service', 'gopls', 'groovyls', 'jsonls', 'lua_ls', 'marksman', 'pylsp', 'yamlls' },
+	ensure_installed = { 'dockerls', 'docker_compose_language_service', 'gopls', 'groovyls', 'jsonls', 'lua_ls', 'marksman', 'pylsp', 'yamlls', 'terraformls' },
 	handlers = {
 		lsp_zero.default_steup,
 	}

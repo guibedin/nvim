@@ -13,7 +13,9 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use 'maxmx03/dracula.nvim'
+  -- Color Scheme
+  use 'folke/tokyonight.nvim'
+  -- use 'maxmx03/dracula.nvim'
   
   use {
         'nvim-treesitter/nvim-treesitter',

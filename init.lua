@@ -158,8 +158,9 @@ vim.opt.termguicolors = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- My Keymaps
+-- My Configs
 vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Nvim File Tree" })
+vim.filetype.add({ extension = { templ = "templ" } })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -546,8 +547,10 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
+				templ = {},
 				gopls = {},
 				pyright = {},
+				html = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -800,7 +803,18 @@ require("lazy").setup({
 
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc", "go", "python" },
+				ensure_installed = {
+					"bash",
+					"c",
+					"html",
+					"lua",
+					"markdown",
+					"vim",
+					"vimdoc",
+					"go",
+					"python",
+					"templ",
+				},
 				-- Autoinstall languages that are not installed
 				auto_install = true,
 				highlight = { enable = true },

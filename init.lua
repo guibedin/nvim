@@ -161,6 +161,7 @@ vim.opt.termguicolors = true
 -- My Configs
 vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Nvim File Tree" })
 vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { ansible = "yaml" } })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -551,6 +552,8 @@ require("lazy").setup({
 				gopls = {},
 				pyright = {},
 				html = {},
+				ansiblels = {},
+				yamlls = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -814,6 +817,7 @@ require("lazy").setup({
 					"go",
 					"python",
 					"templ",
+					"yaml",
 				},
 				-- Autoinstall languages that are not installed
 				auto_install = true,

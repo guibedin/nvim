@@ -159,9 +159,12 @@ vim.opt.termguicolors = true
 --  See `:help vim.keymap.set()`
 
 -- My Configs
-vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Nvim File Tree" })
+-- vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Nvim File Tree" })
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { ansible = "yaml" } })
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -947,4 +950,4 @@ require("lazy").setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4

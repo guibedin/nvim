@@ -363,7 +363,11 @@ require("lazy").setup({
 				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
 				--   },
 				-- },
-				-- pickers = {}
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -557,6 +561,7 @@ require("lazy").setup({
 				html = {},
 				ansiblels = {},
 				yamlls = {},
+				helm_ls = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -828,6 +833,16 @@ require("lazy").setup({
 				indent = { enable = true },
 			})
 
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.gotmpl = {
+				install_info = {
+					url = "https://github.com/ngalaiko/tree-sitter-go-template",
+					files = { "src/parser.c" },
+				},
+				filetype = "gotmpl",
+				used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
+			}
+
 			-- There are additional nvim-treesitter modules that you can use to interact
 			-- with nvim-treesitter. You should go explore a few and see what interests you:
 			--
@@ -920,29 +935,33 @@ require("lazy").setup({
 				harpoon:list():next()
 			end)
 
-			-- basic telescope configuration
-			local conf = require("telescope.config").values
-			local function toggle_telescope(harpoon_files)
-				local file_paths = {}
-				for _, item in ipairs(harpoon_files.items) do
-					table.insert(file_paths, item.value)
-				end
-
-				require("telescope.pickers")
-					.new({}, {
-						prompt_title = "Harpoon",
-						finder = require("telescope.finders").new_table({
-							results = file_paths,
-						}),
-						previewer = conf.file_previewer({}),
-						sorter = conf.generic_sorter({}),
-					})
-					:find()
-			end
-
 			vim.keymap.set("n", "<C-e>", function()
-				toggle_telescope(harpoon:list())
-			end, { desc = "Open harpoon window" })
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end)
+
+			-- -- basic telescope configuration
+			-- local conf = require("telescope.config").values
+			-- local function toggle_telescope(harpoon_files)
+			-- 	local file_paths = {}
+			-- 	for _, item in ipairs(harpoon_files.items) do
+			-- 		table.insert(file_paths, item.value)
+			-- 	end
+			--
+			-- 	require("telescope.pickers")
+			-- 		.new({}, {
+			-- 			prompt_title = "Harpoon",
+			-- 			finder = require("telescope.finders").new_table({
+			-- 				results = file_paths,
+			-- 			}),
+			-- 			previewer = conf.file_previewer({}),
+			-- 			sorter = conf.generic_sorter({}),
+			-- 		})
+			-- 		:find()
+			-- end
+			--
+			-- vim.keymap.set("n", "<C-e>", function()
+			-- 	toggle_telescope(harpoon:list())
+			-- end, { desc = "Open harpoon window" })
 		end,
 	},
 

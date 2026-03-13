@@ -746,15 +746,15 @@ require("lazy").setup({
 				indent = { enable = true },
 			})
 
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			parser_config.gotmpl = {
-				install_info = {
-					url = "https://github.com/ngalaiko/tree-sitter-go-template",
-					files = { "src/parser.c" },
-				},
-				filetype = "gotmpl",
-				used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
-			}
+			-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			-- parser_config.gotmpl = {
+			-- 	install_info = {
+			-- 		url = "https://github.com/ngalaiko/tree-sitter-go-template",
+			-- 		files = { "src/parser.c" },
+			-- 	},
+			-- 	filetype = "gotmpl",
+			-- 	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
+			-- }
 
 			-- There are additional nvim-treesitter modules that you can use to interact
 			-- with nvim-treesitter. You should go explore a few and see what interests you:

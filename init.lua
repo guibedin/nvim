@@ -862,25 +862,6 @@ require("lazy").setup({
 	{
 		"github/copilot.vim"
 	},
-
-	-- Copilot Chat
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", branch = "master" },
-		},
-		build = "make tiktoken",
-		opts = {
-		-- See Configuration section for options
-			headers = {
-				user = '👤 You',
-				    assistant = '🤖 Copilot',
-				    tool = '🔧 Tool',
-			},
-			separator = '━━',
-			auto_insert_mode = true,
-		},
-    },
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--

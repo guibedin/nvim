@@ -81,10 +81,10 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Copilot configs
-vim.g.copilot_no_tab_map = true
-vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
+-- vim.g.copilot_no_tab_map = true
+-- vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
 -- create a keymap set that uses leader cc to run copilotchat open
-vim.keymap.set('n', '<leader>cc', ':CopilotChatOpen<CR>', { desc = "Open Copilot Chat" })
+-- vim.keymap.set('n', '<leader>cc', ':CopilotChatOpen<CR>', { desc = "Open Copilot Chat" })
 
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -859,9 +859,9 @@ require("lazy").setup({
 	},
 
 	-- Copilot
-	{
-		"github/copilot.vim"
-	},
+	--{
+	--	"github/copilot.vim"
+	--},
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--

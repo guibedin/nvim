@@ -86,6 +86,11 @@ vim.opt.expandtab = true
 -- create a keymap set that uses leader cc to run copilotchat open
 -- vim.keymap.set('n', '<leader>cc', ':CopilotChatOpen<CR>', { desc = "Open Copilot Chat" })
 
+-- Enable highlighting from treesitter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'go', 'yaml', 'markdown', 'python' },
+  callback = function() vim.treesitter.start() end,
+})
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -704,48 +709,15 @@ require("lazy").setup({
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-			---@diagnostic disable-next-line: missing-fields
-			require("nvim-treesitter.config").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"html",
-					"lua",
-					"markdown",
-					"vim",
-					"vimdoc",
-					"go",
-					"python",
-					"templ",
-					"yaml",
-				},
-				-- Autoinstall languages that are not installed
-				auto_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
+			require("nvim-treesitter").install({
+				'go',
+				'markdown',
+				'yaml'
 			})
-
-			-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			-- parser_config.gotmpl = {
-			-- 	install_info = {
-			-- 		url = "https://github.com/ngalaiko/tree-sitter-go-template",
-			-- 		files = { "src/parser.c" },
-			-- 	},
-			-- 	filetype = "gotmpl",
-			-- 	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
-			-- }
-
-			-- There are additional nvim-treesitter modules that you can use to interact
-			-- with nvim-treesitter. You should go explore a few and see what interests you:
-			--
-			--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-		end,
+		end
 	},
 
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -858,6 +830,16 @@ require("lazy").setup({
 		end,
 	},
 
+	--- Markdown format
+	{
+	    'MeanderingProgrammer/render-markdown.nvim',
+	    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+	    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+	    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+	    ---@module 'render-markdown'
+	    ---@type render.md.UserConfig
+	    opts = {},
+	}
 	-- Copilot
 	--{
 	--	"github/copilot.vim"
